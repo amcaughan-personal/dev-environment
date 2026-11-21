@@ -56,7 +56,9 @@ RUN if [ "${TARGETARCH:-amd64}" = arm64 ]; then arch=arm64 sha="$MISE_SHA256_ARM
   rm -rf /tmp/mise /tmp/mise.tar.gz
 
 USER dev
+# mise is pinned above and updated with this image, so skip its "new version available" notice.
 ENV MISE_YES=1 \
+    MISE_HIDE_UPDATE_WARNING=1 \
     PATH=/home/dev/.local/share/mise/shims:$PATH
 
 # Fail the build if either tool doesn't run.
