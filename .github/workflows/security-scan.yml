@@ -15,5 +15,4 @@ jobs:
       contents: read
       pull-requests: write # to comment when there are findings
     with:
-      # checkov covers the base image's Dockerfile.
       scans: "checkov, trivy, gitleaks, actionlint"
