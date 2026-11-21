@@ -1,0 +1,31 @@
+" Vim settings for occasional use: mouse support and forgiving defaults.
+"
+" Essentials:
+"   i          start typing (insert mode)      Esc     back to normal mode
+"   :w         save                            :q      quit (asks if there are unsaved changes)
+"   :wq        save and quit                   :q!     quit without saving
+"   u          undo                            Ctrl-r  redo
+"   /text      search (n = next, N = previous) Ctrl-l  clear search highlighting
+"   dd         delete (cut) line               yy      copy line        p   paste
+"   gg / G     top / bottom of file            :42     go to line 42
+
+set nocompatible
+syntax on
+filetype plugin indent on
+
+set mouse=a                 " click to move the cursor, scroll, drag to select
+set number                  " line numbers
+set ruler showcmd showmode  " position, partial commands and the current mode
+set laststatus=2            " always show the status line
+set wildmenu                " Tab-complete : commands with a menu
+set confirm                 " ask to save instead of refusing to quit
+set hidden                  " switch files without saving first
+set scrolloff=3             " keep a few lines visible above and below the cursor
+
+set incsearch hlsearch      " highlight matches as you type and after searching
+set ignorecase smartcase    " case-insensitive unless the search has a capital letter
+set backspace=indent,eol,start
+set autoindent expandtab shiftwidth=2 softtabstop=2
+
+" Ctrl-l also clears search highlighting.
+nnoremap <silent> <C-l> :nohlsearch<CR><C-l>

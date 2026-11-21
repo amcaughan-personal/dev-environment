@@ -3,8 +3,8 @@
 My development environment, in two parts:
 
 - **Dotfiles** (`dotfiles/`, applied by `install.sh`): shell prompt with the Git branch,
-  a few aliases, mise activation and the `dc` helper. The same on my machine and inside
-  every dev container. Things get added here deliberately, when I actually use them.
+  a few aliases, mise activation, the `dc` helper, and vim settings with mouse support and a
+  command cheat sheet. The same on my machine and inside every dev container.
 - **Dev container base image** (`devcontainer-base/`): Ubuntu with the AWS CLI and
   [mise](https://mise.jdx.dev), for amd64 and arm64, published as
   `ghcr.io/amcaughan-personal/devcontainer-base`. Each repo's `.devcontainer/` starts from it

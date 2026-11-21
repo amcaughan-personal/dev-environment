@@ -22,7 +22,7 @@ ARG MISE_SHA256_AMD64=d2d5a46f507bba772686e2c8f2316b3a4439dac49a37a30db5c0e7bb07
 ARG MISE_SHA256_ARM64=b36da3c4892380325d44dee3678ba618de191254d8a4aed8011ee66b28a6cbd7
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ca-certificates curl git jq less python3 unzip \
+    ca-certificates curl git jq less python3 unzip vim \
   && rm -rf /var/lib/apt/lists/*
 
 # uid 1000 matches the usual host user, so mounted files stay writable. Ubuntu's image

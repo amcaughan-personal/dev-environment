@@ -22,4 +22,5 @@ jobs:
           export HOME="$RUNNER_TEMP/home" && mkdir -p "$HOME" && touch "$HOME/.bashrc"
           ./install.sh && ./install.sh
           test "$(grep -c 'dotfiles/bashrc.sh' "$HOME/.bashrc")" -eq 1
+          test -L "$HOME/.vimrc"
           bash -ic 'type parse_git_branch >/dev/null && alias gs >/dev/null && echo "prompt and aliases load"'
