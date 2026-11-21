@@ -16,3 +16,13 @@ updates:
       actions:
         patterns: ["*"]
         exclude-patterns: ["amcaughan-personal/*"]
+  - package-ecosystem: docker
+    directory: /devcontainer-base
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    ignore:
+      # Only refresh the digest (patches for the same Ubuntu version).
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]

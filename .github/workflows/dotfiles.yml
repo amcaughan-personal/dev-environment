@@ -1,0 +1,25 @@
+name: dotfiles
+
+# Lints the shell files and checks install.sh works, and is safe to run twice, in a fresh
+# home directory.
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  dotfiles:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: shellcheck
+        run: shellcheck install.sh dotfiles/bashrc.sh
+      - name: install.sh in a fresh home, twice
+        run: |
+          set -euo pipefail
+          export HOME="$RUNNER_TEMP/home" && mkdir -p "$HOME" && touch "$HOME/.bashrc"
+          ./install.sh && ./install.sh
+          test "$(grep -c 'dotfiles/bashrc.sh' "$HOME/.bashrc")" -eq 1
+          bash -ic 'type parse_git_branch >/dev/null && alias gs >/dev/null && echo "prompt and aliases load"'
