@@ -1,0 +1,18 @@
+# Weekly update PRs, only for versions published at least 7 days ago (a new release has
+# time to be pulled or flagged before it lands here). Security fixes skip the wait.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+    cooldown:
+      default-days: 7
+      # Our own shared workflows are already reviewed; take new versions right away.
+      exclude: ["amcaughan-personal/*"]
+    groups:
+      shared-workflows:
+        patterns: ["amcaughan-personal/*"]
+      actions:
+        patterns: ["*"]
+        exclude-patterns: ["amcaughan-personal/*"]

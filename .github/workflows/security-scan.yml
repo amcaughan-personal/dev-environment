@@ -1,0 +1,19 @@
+name: security
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  security:
+    uses: amcaughan-personal/shared_workflows/.github/workflows/security-scan.yml@87104af04a84c34e08b4190a0e82d1631ef128d5 # v1.0.0
+    permissions:
+      contents: read
+      pull-requests: write # to comment when there are findings
+    with:
+      # Add checkov if this repo gets infrastructure code (Terraform, Dockerfiles).
+      scans: "trivy, gitleaks, actionlint"
