@@ -29,6 +29,8 @@ nothing secret or personal in this repo: it's public.
 ## The base image
 
 [`devcontainer-base.yml`](.github/workflows/devcontainer-base.yml) builds it for amd64 and
-arm64 on every PR, and publishes it on merge to main (`:latest` and `:<commit>`). Repos pin
+arm64 on every PR, and publishes it on merge to main (`:latest` and `:<commit>`). The
+package is public, so anyone opening the repos can use it; that needs the org setting
+*Packages → Package creation → Public*, which the GitHub Terraform provider can't manage. Repos pin
 `:latest@sha256:…`; their Dependabot proposes the new digest. Every download in the
 Dockerfile is checked against a SHA-256 recorded with its version.
